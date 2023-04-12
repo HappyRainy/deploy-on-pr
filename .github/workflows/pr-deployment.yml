@@ -26,6 +26,37 @@ jobs:
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: releasing
+      - name: Deploying to au-staging-1
+        id: deploying_to_au-staging-1
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: deployed_au-staging-1
+      - name: Integration test on au-staging-1
+        id: integration_test_on_au-staging-1
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: tested_au-staging-1          
+      - name: Deploying to au-prod-1
+        id: deploying_to_au-prod-1
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: deployed_au-prod-1
+      - name: Released
+        id: released
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: released
+      - name: Remove Release
+        id: remove_releasing
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: |
+            release
+            releasing
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@v0.15.6"
+      
 #       - name: Get temporary token for creating deployment
 #         id: temp_token
 #         uses: peter-murray/workflow-application-token-action@v1
